@@ -30,9 +30,11 @@ var MANAGETHIS = {
                         iframe.scrolling = 'auto';
                         iframe.style = 'width:100%; height:926px';
                         iframe.src = service.url;
-                        iframe.contentWindow.document.open();
-                        iframe.contentWindow.document.write(html);
-                        iframe.contentWindow.document.close();
+			if (!service.autoload) {
+			  iframe.contentWindow.document.open();
+			  iframe.contentWindow.document.write(html);
+			  iframe.contentWindow.document.close();
+			}
                     }
                 });
             });
